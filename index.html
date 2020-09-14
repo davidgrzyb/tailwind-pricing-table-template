@@ -10,9 +10,10 @@
 
     <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.min.js" defer></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
-<body class="max-w-3xl mx-auto bg-gray-100" style="font-family:'Lato',sans-serif;">
+<body class="relative max-w-3xl mx-auto bg-gray-100" style="font-family:'Lato',sans-serif;">
     <div class="text-center my-10">
         <h1 class="font-bold text-3xl mb-2">Pricing Table</h1>
         <h4 class="text-gray-600">This is a simple TailwindCSS pricing table.</h4>
@@ -57,6 +58,25 @@
                 <p class="my-2"><span class="fa fa-check-circle mr-2 ml-1"></span> Unlimited users</p>
             </div>
             <button class="w-full text-purple-700 border border-purple-700 rounded hover:bg-purple-700 hover:text-white hover:shadow-xl transition duration-150 ease-in-out py-4 mt-4">Choose Plan</button>
+        </div>
+    </div>
+
+    <!-- Modal CTA -->
+    <div x-data="{ open: false }" 
+        x-init="() => { setTimeout(() => { open = true }, 3000); }" 
+        x-show.transition.duration.500ms="open" 
+        class="fixed inset-0 w-full h-screen flex items-center justify-center bg-white bg-opacity-75 px-4 md:px-0"
+    >
+        <div class="flex flex-col w-full max-w-lg bg-white shadow-lg rounded-lg border-4 border-gray-400 p-4" @click.away="open = false">
+            <div class="text-center font-bold pt-2 pb-6 text-xl">
+                Would you like to see how I built this? 🚀
+            </div>
+            <div class="">
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/juoVjGCUmoY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="pt-6 pb-2">
+                <button class="bg-blue-500 text-white font-bold rounded-lg w-full hover:bg-blue-600 hover:shadow-xl py-3" @click="open = false">No Thanks 🙁</button>
+            </div>
         </div>
     </div>
 </body>
